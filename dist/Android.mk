@@ -71,6 +71,7 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := $(common_src_files)
 LOCAL_LDLIBS += -lpthread -ldl
 LOCAL_CFLAGS += $(host_sqlite_flags)
+LOCAL_CFLAGS += -Wno-empty-body -Wno-array-bounds
 LOCAL_MODULE:= libsqlite
 LOCAL_SHARED_LIBRARIES += libicuuc-host libicui18n-host
 LOCAL_STATIC_LIBRARIES := liblog libutils libcutils
@@ -103,6 +104,8 @@ LOCAL_SHARED_LIBRARIES := libsqlite \
 
 LOCAL_CFLAGS += $(device_sqlite_flags)
 
+LOCAL_CFLAGS += -Wno-empty-body -Wno-array-bounds
+
 LOCAL_MODULE_PATH := $(TARGET_OUT_OPTIONAL_EXECUTABLES)
 
 LOCAL_MODULE_TAGS := debug
@@ -126,6 +129,8 @@ LOCAL_SRC_FILES := $(common_src_files) shell.c
 
 LOCAL_CFLAGS += $(host_sqlite_flags) \
     -DNO_ANDROID_FUNCS=1
+
+LOCAL_CFLAGS += -Wno-empty-body -Wno-array-bounds
 
 # sqlite3MemsysAlarm uses LOG()
 LOCAL_STATIC_LIBRARIES += liblog
